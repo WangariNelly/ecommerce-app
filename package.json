@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-      "start": "node Backend/server.js",
+      "start": "node ./server.js",
       "dev": "nodemon server.js",
-      "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js"
+      "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js",
+      "seeder": "node ./utils/seeder.js"
   },
   "author": "",
   "license": "ISC",
