@@ -1,4 +1,5 @@
 const Product = require('../models/products');
+
 exports.getProducts = (req, res) => {
     // const product = Product.find({});
     res.status(200).json({ message: `success`});
