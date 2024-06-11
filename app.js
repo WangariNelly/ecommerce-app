@@ -6,7 +6,7 @@ const products = require('./routes/product')
 app.use(express.json());
 
 //routes
-app.use('/api/v1/products', products);
+app.use('/api/v1/', products);
 
 
 

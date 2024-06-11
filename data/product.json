@@ -1,0 +1,102 @@
+[
+    {
+      "name": "Awesome T-Shirt",
+      "price": 29.99,
+      "description": "This is a comfortable and stylish T-shirt perfect for everyday wear.",
+      "ratings": 4.5,
+      "images": [
+        {
+          "public_id": "product1_image1",
+          "url": "https://example.com/images/product1_image1.jpg"
+        },
+        {
+          "public_id": "product1_image2",
+          "url": "https://example.com/images/product1_image2.jpg"
+        }
+      ],
+      "category": "shirt",
+      "seller": "John Doe",
+      "stock": 100,
+      "reviews": [
+        {
+          "name": "Jane Smith",
+          "rating": 5,
+          "comment": "Love this T-shirt! Great quality and fit.",
+          "user": "jane_smith_123",
+          "createdAt": "2024-06-11T15:11:00.000Z"
+        },
+        {
+          "name": "Mike Jones",
+          "rating": 4,
+          "comment": "Great shirt, but could be a bit softer.",
+          "user": "mike_jones_456",
+          "createdAt": "2024-06-10T10:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "name": "High-Performance Laptop",
+      "price": 799.99,
+      "description": "This powerful laptop is perfect for gamers and creative professionals.",
+      "ratings": 4.8,
+      "images": [
+        {
+          "public_id": "product2_image1",
+          "url": "https://example.com/images/product2_image1.jpg"
+        },
+        {
+          "public_id": "product2_image2",
+          "url": "https://example.com/images/product2_image2.jpg"
+        }
+      ],
+      "category": "laptops",
+      "seller": "Tech Company Inc.",
+      "stock": 50,
+      "reviews": [] 
+    },
+    {
+      "name": "Wireless Noise-Cancelling Headphones",
+      "price": 199.99,
+      "description": "Experience superior sound quality and focus with these comfortable noise-cancelling headphones.",
+      "ratings": 4.7,
+      "images": [
+        {
+          "public_id": "product3_image1",
+          "url": "https://example.com/images/product3_image1.jpg"
+        }
+      ],
+      "category": "headphones",
+      "seller": "Audio Solutions",
+      "stock": 75,
+      "reviews": [
+        {
+          "name": "David Lee",
+          "rating": 5,
+          "comment": "These headphones are amazing! The noise cancellation is incredible and the sound quality is fantastic.",
+          "user": "david_lee_789",
+          "createdAt": "2024-06-11T12:30:00.000Z"
+        }
+      ]
+    },
+    {
+      "name": "Adventure Backpack",
+      "price": 99.99,
+      "description": "This durable backpack is perfect for your next outdoor adventure.",
+      "ratings": 4.3,
+      "images": [
+        {
+          "public_id": "product4_image1",
+          "url": "https://example.com/images/product4_image1.jpg"
+        },
+        {
+          "public_id": "product4_image2",
+          "url": "https://example.com/images/product4_image2.jpg"
+        }
+      ],
+      "category": "outdoor",
+      "seller": "Gear Up Inc.",
+      "stock": 20,
+      "reviews": []  
+    }
+  ]
+  
