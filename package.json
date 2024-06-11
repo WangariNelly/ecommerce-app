@@ -1,0 +1,19 @@
+{
+  "name": "shopit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+      "start": "node Backend/server.js",
+      "dev": "nodemon server.js",
+      "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3"
+  }
+}
