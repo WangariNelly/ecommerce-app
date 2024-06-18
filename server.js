@@ -1,18 +1,10 @@
+require("dotenv").config({ path: "./config/config.env" });
+const app = require("./app");
+const connectDB = require("./config/database");
 
-require('dotenv').config({path:'./config/config.env'})
+//connecting to database
+connectDB();
 
-const app = require('./app');
-const PORT = process.env.PORT || 5500;
-const connectDB = require('./config/database')
-
-const connectToDatabase = async () => {
-    try {
-      await connectDB();
-      app.listen(PORT, () => {
-        console.log(`Server running on PORT: ${PORT}...`);
-      });
-    } catch (err) {
-      console.error('Error connecting to database:', err);
-    }
-  };
-  connectToDatabase();
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on PORT: ${process.env.PORT} in ${process.env.NODE_ENV} mode...`);
+});
