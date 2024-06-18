@@ -4,7 +4,7 @@ const Product = require("../models/products");
 const products = require("../data/products");
 const connectDB = require("../config/database");
 
-// connectDB();
+connectDB();
 
 const seedProducts = async () => {
   try {
