@@ -1,6 +1,6 @@
 // global error class
 class ErrorHandler extends Error {
-    constructor(message, errorCode ){
+    constructor(message, statusCode ){
         super(message);
         this.statusCodeCode = statusCode
 
