@@ -10,4 +10,4 @@ router.route('/admin/product/:id')
   .delete(deleteProduct);
 
 
-module.exports = router; 
+module.exports = router;    
