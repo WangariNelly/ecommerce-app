@@ -2,6 +2,12 @@ require("dotenv").config({ path: "./config/config.env" });
 const app = require("./app");
 const connectDB = require("./config/database");
 
+//Handle uncaught exceptions
+process.on('uncaughtException', err => {
+  console.log(`ERROR: ${err.stack}`);
+  console.log('Shutting down server due to Uncaught exceptions.');
+  process.exit(1)
+})
 //connecting to database
 connectDB();
 
