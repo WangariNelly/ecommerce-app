@@ -15,7 +15,17 @@ module.exports = (err, req, res, next) => {
     if (process.env.NODE_ENV.includes('PRODUCTION')) {
         let error = {...err}
 
+        //Wrong Mongoose object ID Error
         error.message = err.message
+        if(err.name == 'CastError') {
+            const message = `Resource not found. Invalid: ${err.path}`
+            error = new ErrorHandler(message, 400)
+        }
+
+        if (err.name === 'ValidationError'){
+            const message = Object.values(err.values).map(value => value.message);
+            error = new ErrorHandler(message, 400);
+        }
 
         res.status(error.statusCode).json({
             success: false,
