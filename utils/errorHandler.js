@@ -1,6 +1,5 @@
-// global error class
 class ErrorHandler extends Error {
-    constructor(message, statusCode ){
+    constructor(message, statusCode){
         super(message);
         this.statusCode = statusCode
 
@@ -8,4 +7,4 @@ class ErrorHandler extends Error {
     }
 }
 
-module.export = ErrorHandler;
+module.exports = ErrorHandler;
