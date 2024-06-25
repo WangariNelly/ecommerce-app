@@ -47,3 +47,4 @@ exports.deleteProduct = catchAsyncErrors(async (res, req, next) => {
   await product.remove();
   res.status(200).json({ message: `Deleted product` });
 });
+ 
