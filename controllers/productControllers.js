@@ -8,12 +8,23 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   res.status(201).json({ message: `success`, product });
 });
 
+//get all products
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
+
+  const resPerPage = 2;
+  const productCount = await Product.countDocuments();
   const apiFeatures = new APIFeatures(Product.find(), req.query)
-                      .search();
+                      .search()
+                      .filter()
+                      .pagination(resPerPage)
 
   const products = await apiFeatures.query;
-  res.status(200).json({ message: `success`, products });
+  res.status(200).json({ 
+    success: true,
+   count: products.length,
+   productCount,
+   products
+  });
 });
 
 //single product
