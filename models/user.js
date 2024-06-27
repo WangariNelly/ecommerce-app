@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 const { validate } = require('./products');
 
 const userSchema = new mongoose.Schema({
@@ -37,7 +39,7 @@ const userSchema = new mongoose.Schema({
      },
      createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now 
      },
      resetPasswordToken: String,
      resetPasswordExpire: Date
@@ -50,5 +52,12 @@ userSchema.pre('save', async function(next){
    }
    this.password = await bcrypt.hash(this.password, 10);
 })
+
+//return JWT Tokens
+userSchema.methods.getJwtToken = function(){
+   return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRES_TIME
+   })
+}
 
 module.exports = mongoose.model('User',userSchema);
