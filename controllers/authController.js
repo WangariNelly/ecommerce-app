@@ -56,5 +56,4 @@ exports.logout = catchAsyncErrors( async( req,res,next) => {
         success: true,
         message: 'Logged Out'
     })
-    next();
 })
