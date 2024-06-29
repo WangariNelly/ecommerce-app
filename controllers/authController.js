@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const crypto = require('crypto')
 
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const ErrorHandler = require('../utils/errorHandler');
@@ -81,6 +82,35 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
 })
 
+
+//Reset password => /api/vi/password/reset/:token
+exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
+     //hash URL Token
+     const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex')
+
+    const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() }
+ })
+   if(!user){
+    return next(new ErrorHandler('Password token is Invalid or has expired', 400))
+   }
+
+   if(req.body.password !== req.body.confirmPassword){
+    return next(new ErrorHandler('Password does not match, 400'))
+   }
+
+   //setup new password
+   user.password = req.body.password;
+
+   user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+
+await user.save();
+
+sendToken(user, 200, res);
+
+});
 
 
 //logout users /api/v1/logout
