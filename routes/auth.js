@@ -24,11 +24,13 @@ router.route("/me/update").put(isAuthenticatedUser, updateProfile);
 router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 
 //admin
-router
-  .route("/admin/users")
+router.route("/admin/users")
   .get(isAuthenticatedUser, authorizeRoles("admin"), allUsers);
-router
-  .route("/admin/user/:id")
+router.route("/admin/user/:id")
   .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails);
 
+
+
+
+  
 module.exports = router;
