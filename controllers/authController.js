@@ -61,8 +61,11 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     //create reset password url
     const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`;
 
+    await user.save({
+        validateBeforeSave: false,
+    })
     const message = `Your password reset token is as follows:\n\n${resetUrl}\n\nif you have not requested this email,then ignore it.`
-
+    
     try {
         await sendEmail({
             email: user.email,
@@ -98,7 +101,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
    }
 
    if(req.body.password !== req.body.confirmPassword){
-    return next(new ErrorHandler('Password does not match, 400'))
+    return next(new ErrorHandler('Password does not match',400))
    }
 
    //setup new password
@@ -191,4 +194,22 @@ exports.getUserDetails =  catchAsyncErrors(async(req,res,next) => {
     success: true,
     user
   })
+});
+
+//update the user profile => /api/v1/admin/user/:id
+exports.updateUser = catchAsyncErrors(async (req,res,next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role
+    }
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    }) 
+    res.status(200).json({
+        success: true,
+        user
+    })
 })
