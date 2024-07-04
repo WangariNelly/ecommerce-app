@@ -11,7 +11,7 @@ const {
 } = require("../controllers/orderController");
 
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
-const { createProductReview } = require("../controllers/productControllers");
+// const { createProductReview } = require("../controllers/productControllers");
 
 router.route("/order/new").post(isAuthenticatedUser, newOrder);
 router.route("/order/:id").get(isAuthenticatedUser, getSingleOrder);
@@ -23,9 +23,6 @@ router
   .route("/admin/order/:id")
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder);
-
-router.route('/review').put(isAuthenticatedUser,createProductReview);
-
 
 
 
